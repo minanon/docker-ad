@@ -4,7 +4,7 @@ MAINTAINER minanon
 
 RUN DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
-    && apt-get install -y curl samba samba-vfs-modules openssl gcc make ca-certificates --no-install-recommends \
+    && apt-get install -y curl samba samba-vfs-modules openssl ca-certificates --no-install-recommends \
     && apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 # install bind
