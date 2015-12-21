@@ -6,5 +6,7 @@ mkdir -p /var/lib/samba/usershares /var/lib/samba/printers/{COLOR,IA64,W32ALPHA,
 chgrp sambashare /var/lib/samba/usershares
 chmod 1770 /var/lib/samba/usershares
 
+useradd bind 2>/dev/null || true
+
 
 /scripts/samba-tool.sh domain provision "${@}"
