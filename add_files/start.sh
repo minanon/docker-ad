@@ -3,10 +3,6 @@
 subcmd="${1}"
 script_dir="/scripts"
 
-## start smbd
-[ "${subcmd}" = "smbd" ] \
-    && { /usr/sbin/smbd -F; exit $?; }
-
 ## exec subcommand
 cmd="${script_dir}/${subcmd}.sh"
 [ -x "${cmd}" ] \
@@ -18,7 +14,6 @@ Usage:
     Please set subcommand.
 
     subcommands:
-        smbd ... start smbd daemon after setup
 $(
         for file in $(find ${script_dir} -maxdepth 1 -type f -executable -not -name '.*')
         do

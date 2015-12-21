@@ -7,7 +7,11 @@ RUN DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y curl samba samba-vfs-modules openssl --no-install-recommends \
     && apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
-#EXPOSE 53/udp 53/tcp
+# create shared directory
+RUN mkdir -p /share
+VOLUME [ "/share" ]
+
+# setup setting directory and script files
 VOLUME [ "/var/lib/samba/private/" ]
 VOLUME [ "/etc/samba" ]
 ADD add_files/start.sh /start.sh

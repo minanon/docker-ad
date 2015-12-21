@@ -15,12 +15,12 @@ minanon
 ### プロビジョニング
 設定を行います。
 
-     docker run --rm -it -v /opt/docker/data/samba/etc:/etc/samba -v /opt/docker/data/samba/data:/var/lib/samba adtest provision --use-rfc2307 --function-level=2008_R2 --domain=LOCAL --realm=LOCAL.YM --adminpass=test-1234 --dns-backend=BIND9_DLZ --server-role=dc
+     docker run --rm -it -v /opt/docker/data/samba/etc:/etc/samba -v /opt/docker/data/samba/data:/var/lib/samba -v /opt/docker/data/samba/data/private:/var/lib/samba/private adtest provision --use-rfc2307 --function-level=2008_R2 --domain=LOCAL --realm=LOCAL.YM --adminpass=test-1234 --dns-backend=BIND9_DLZ --server-role=dc
 
 ### ユーザー追加
 
-     docker run -v /opt/docker/data/samba/etc:/etc/samba -v /opt/docker/data/samba/data:/var/lib/samba adtest user
+     docker run -v /opt/docker/data/samba/etc:/etc/samba -v /opt/docker/data/samba/data:/var/lib/samba adtest -v /opt/docker/data/samba/data/private:/var/lib/samba/private user
 
 ### smbd 起動
 
-     docker run -v /opt/docker/data/samba/etc:/etc/samba -v /opt/docker/data/samba/data:/var/lib/samba adtest smbd
+     docker run -v /opt/docker/data/samba/etc:/etc/samba -v /opt/docker/data/samba/data:/var/lib/samba -v /opt/docker/data/samba/data/private:/var/lib/samba/private adtest samba
