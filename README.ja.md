@@ -1,17 +1,26 @@
 #docker-bind
-BIND起動用Dockerfile
+ActiveDirectoryの構築
 
 ##概要
-BINDを簡易起動する構成のDockerfileです。
+SambaによるActiveDirectoryを構築します。
 
 ##Maintainer
 minanon
 
 ##外部からアクセスするための情報
 - 使用するポート番号は、53(UDPとTCP）です
-- データの保存箇所は/etc/namedとなっています
+- データの保存箇所は/etc/samba, /var/lib/samba となっています
 
 ##起動方法
-以下のようなコマンドで実行します。
+### プロビジョニング
+設定を行います。
 
-    docker run -d --name bind -p 53:53/udp -p 53:53 -v /opt/docker/data/bind:/etc/named -d minanon/bind
+     docker run --rm -it -v /opt/docker/data/samba/etc:/etc/samba -v /opt/docker/data/samba/data:/var/lib/samba adtest provision --use-rfc2307 --function-level=2008_R2 --domain=LOCAL --realm=LOCAL.YM --adminpass=test-1234 --dns-backend=BIND9_DLZ --server-role=dc
+
+### ユーザー追加
+
+     docker run -v /opt/docker/data/samba/etc:/etc/samba -v /opt/docker/data/samba/data:/var/lib/samba adtest user
+
+### smbd 起動
+
+     docker run -v /opt/docker/data/samba/etc:/etc/samba -v /opt/docker/data/samba/data:/var/lib/samba adtest smbd
