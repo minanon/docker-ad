@@ -3,4 +3,4 @@
 
 set -eu
 
-exec /scripts/samba-tool samba-tool domain exportkeytab "/var/lib/samba/${1}.keytab" --principal="${1}"
+exec /scripts/samba-tool domain exportkeytab "/var/lib/samba/${1}.keytab" --principal="${1}"
