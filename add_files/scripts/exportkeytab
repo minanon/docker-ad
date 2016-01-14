@@ -1,0 +1,6 @@
+#!/bin/bash
+# @(#) export keytab to /var/lib/samba/. Please only one parameter for principal. It is as same as "samba-tool domain exportkeytab /var/lib/samba/${1}.keytab --principal=${1]".
+
+set -eu
+
+exec /scripts/samba-tool samba-tool domain exportkeytab "/var/lib/samba/${1}.keytab" --principal="${1}"
