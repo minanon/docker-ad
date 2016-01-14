@@ -3,4 +3,4 @@
 
 echo -n 'Please input new password: '
 read -sr passwd
-/scripts/samba-tool.sh user setpassword "${@}" --newpassword=${passwd}
+exec /scripts/samba-tool.sh user setpassword "${@}" --newpassword=${passwd}

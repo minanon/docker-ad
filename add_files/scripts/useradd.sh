@@ -5,4 +5,4 @@ set -eu
 
 /scripts/samba-tool.sh user create "${@}"
 
-samba-tool user setexpiry "${1}" --noexpiry
+exec samba-tool user setexpiry "${1}" --noexpiry

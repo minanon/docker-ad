@@ -1,4 +1,4 @@
 #!/bin/bash
 # @(#) start smbd on frontend
 
-/usr/sbin/samba -i "${@}"
+exec /usr/sbin/samba -i "${@}"
