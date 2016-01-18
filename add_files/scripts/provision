@@ -9,4 +9,4 @@ chmod 1770 /var/lib/samba/usershares
 useradd bind 2>/dev/null || true
 
 
-exec /scripts/samba-tool.sh domain provision "${@}"
+exec /scripts/samba-tool domain provision "${@}"
